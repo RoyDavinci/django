@@ -1,0 +1,19 @@
+{% extends "base_generic.html" %} {% block content %}
+<h1>Title: {{ author.first_name }} {{ author.last_name }}</h1>
+
+<!-- author detail link not yet defined -->
+<p>
+	<strong>Date of Death: </strong> {% if author.date_of_death %} 
+    {{ author.date_of_death }} {% else %} Still Alive {% endif %}
+</p>
+<p>
+	<strong>Date of birth: </strong>{% if author.birth %} {{ author.birth }} 
+    {% else %} Not Set {% endif %}
+</p>
+<p>
+    {% if user.is_staff  %}
+
+<a href="{% url 'author-delete' author.id %}" class="btn btn-danger">Delete Author</a>
+{% endif %}
+</p>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends "base_generic.html" %} {% block content %}
+<h1>Author List</h1>
+{% if author_list %}
+<ul>
+	{% for author in author_list %}
+	<li>
+		<a href="{{ author.get_absolute_url }}"
+			>{{ author.first_name }} {{ author.last_name }}</a
+		>
+	</li>
+	<li><strong>Date of birth: </strong>{% if author.birth %} 
+        {{ author.birth }} {% else %} Not Set {% endif %}</li>
+	<li>
+		<strong>Date of Death: </strong>{% if author.date_of_death %} 
+        {{ author.date_of_death }} {% else %} Still Alive {% endif %}
+	</li>
+	{% endfor %}
+</ul>
+{% else %}
+<p>There are no authors.</p>
+
+
+
+{% endif %} 
+
+{% if user.is_staff  %}
+
+<a href="{% url 'author-create' %}" class="btn btn-primary">Add Author</a>
+{% endif %}
+{% endblock %}
