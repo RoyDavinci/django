@@ -1,1 +1,1 @@
-web: python manage.py migrate && python manage.py collectstatic && gunicorn news.wsgi
+web: python manage.py migrate && python manage.py collectstatic --noinput && gunicorn news.wsgi
